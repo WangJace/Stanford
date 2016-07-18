@@ -20,6 +20,15 @@
                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="8ao-ri-JzN" customClass="FaceView" customModule="FaceIt" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="0.95686274510000002" green="0.65098039220000004" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="CfU-qJ-w4v" appends="YES" id="uzH-1a-eHY"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -30,8 +39,16 @@
                             <constraint firstItem="8ao-ri-JzN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="h7n-Ou-hrZ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="faceView" destination="8ao-ri-JzN" id="hCG-Bi-Wq8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="CfU-qJ-w4v">
+                    <connections>
+                        <action selector="toggleEyes:" destination="BYZ-38-t0r" id="FL6-ym-wIw"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
         </scene>
     </scenes>
