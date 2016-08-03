@@ -51,6 +51,35 @@ class FaceViewController: UIViewController {
             }
         }
     }
+    
+    private struct Animation {
+        static let ShakeAngle = CGFloat(M_PI/6)
+        static let ShakeDuration = 0.5
+    }
+    
+    @IBAction func headShake(sender: UITapGestureRecognizer) {
+        UIView.animateWithDuration(Animation.ShakeDuration, animations: {
+            self.faceView.transform = CGAffineTransformRotate(self.faceView.transform, Animation.ShakeAngle)
+            }, completion: { (finished) in
+                if finished {
+                    UIView.animateWithDuration(Animation.ShakeDuration, animations: { 
+                        self.faceView.transform = CGAffineTransformRotate(self.faceView.transform, -Animation.ShakeAngle*2)
+                        }, completion: { (finished) in
+                            if finished {
+                                UIView.animateWithDuration(Animation.ShakeDuration, animations: { 
+                                    self.faceView.transform = CGAffineTransformRotate(self.faceView.transform, Animation.ShakeAngle)
+                                    }, completion: { (finished) in
+                                        if finished {
+                                            
+                                        }
+                                })
+                            }
+                    })
+                }
+        })
+    }
+    
+    
     private var mouthCurvatures = [FacialExpression.Mouth.Frown:-1.0, .Grin:0.5, .Smile:1.0, .Smirk:-0.5, .Neutral:0.0]
     private var eyeBrowTilt = [FacialExpression.EyeBrows.Relaxed:0.5, .Furrowed:-0.5, .Normal:0.0]
     
